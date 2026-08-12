@@ -58,6 +58,22 @@ The following tools must be installed and available on `$PATH` for the agent wor
 
 All Go tools require a working [Go](https://go.dev/dl/) installation with `$GOPATH/bin` on your `$PATH`.
 
+To install every Go tool at once (idempotent — skips what you already have):
+
+```bash
+for pkg in \
+  github.com/elastic/elastic-package \
+  github.com/elastic/celfmt/cmd/celfmt \
+  github.com/elastic/stream \
+  github.com/elastic/mito/cmd/mito \
+  github.com/efd6/ceplx/cmd/ceplx \
+  github.com/efd6/kbdash; do
+  command -v "${pkg##*/}" >/dev/null || go install "$pkg@latest"
+done
+```
+
+If a tool is still missing afterward, add `$(go env GOPATH)/bin` to `PATH` and re-run the loop.
+
 > **Windows:** All Go tools install and run on Windows. Bash examples using process substitution or Unix paths require manual adaptation.
 
 ### npx (Recommended)

@@ -5,9 +5,41 @@ Use this reference for scaffolding packages and data streams and applying the re
 ## Preconditions
 
 Before running scaffold commands, verify:
-1. `elastic-package` is available (`elastic-package --help`)
+1. `elastic-package` is available on `$PATH`
 2. you are in the correct directory (see working directory rules below)
 3. package/data stream name is finalized (renames later are noisy)
+
+```bash
+command -v elastic-package >/dev/null || { echo "MISSING: elastic-package"; exit 1; }
+```
+
+**For integrations with CEL data streams, the CEL tools must be present before starting.** Missing tools produce silent degraded output — `celfmt` and `ceplx` steps are skipped without warning, resulting in PRs that require extra review cycles to catch what the tooling should have caught automatically.
+
+Always probe with `command -v`, never with `-version`: of these four only `mito` accepts a `-version` flag. `celfmt` and `ceplx` exit 2 with `flag provided but not defined: -version`, and `stream` uses a `version` subcommand, so a chained `-version` check fails even when every tool is installed.
+
+**Check** (exits non-zero if anything is missing):
+
+```bash
+m=
+for t in mito celfmt ceplx stream; do
+  command -v "$t" >/dev/null || { echo "MISSING: $t"; m=1; }
+done
+[ -z "$m" ] && echo "all CEL tools present" || exit 1
+```
+
+**Install** missing tools (idempotent — skips what is already present):
+
+```bash
+for pkg in \
+  github.com/elastic/mito/cmd/mito \
+  github.com/elastic/celfmt/cmd/celfmt \
+  github.com/efd6/ceplx/cmd/ceplx \
+  github.com/elastic/stream; do
+  command -v "${pkg##*/}" >/dev/null || go install "$pkg@latest"
+done
+```
+
+All four land in `$(go env GOPATH)/bin` (usually `~/go/bin`). After Install, **re-run the Check block above**. If Check still fails, `$(go env GOPATH)/bin` is not on `PATH` — add it and retry.
 
 ## Working directory rules
 
