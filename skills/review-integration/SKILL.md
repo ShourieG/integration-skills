@@ -151,6 +151,7 @@ These references live in this skill's `references/` directory and provide review
 | CEL or HTTPJSON with API docs available | `references/api-conformance-methodology.md` -- cross-reference implementation vs vendor docs |
 | entity-analytics input in scope | `references/entity-analytics-provider-matrix.md` + `checklists/entity-analytics-review-checklist.md` -- provider sync/marker/deletion semantics and package checklist |
 | Any input templates in scope | `references/input-review-orchestration.md` -- review depth routing by input type |
+| Assessing the PR title/description (first review) | `references/commit-message-conventions.md` -- squash-merge commit-message conventions the PR title is judged against |
 | Cloud security / CDR integration | `ecs-field-mappings/references/cdr-field-requirements.md` + `ingest-pipelines/references/cdr-pipeline-requirements.md` + `references/cdr-transform-requirements.md` |
 | Entity / entity-inventory data stream | `entity-mappings/references/entity-field-catalog.md` + `entity-mappings/references/entity-pipeline-patterns.md` |
 
