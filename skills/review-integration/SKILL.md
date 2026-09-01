@@ -238,7 +238,7 @@ Every issue must include exactly one domain tag:
 | Tag | Covers |
 |-----|--------|
 | `domain:manifest` | Root or data stream manifest fields, format_version, conditions, categories, owner, policy templates |
-| `domain:changelog` | changelog.yml schema, version mismatch, missing entries (missing = user-shipped package content changed without an entry/bump; internal metadata-only changes such as `owner.github` need none), invalid links (`pull/99999` dev placeholder is expected pre-merge — see conflict-resolutions), entry-type miscategorization only when the diff shows an observable compatibility/behavior change (re-bucketing bugfix/enhancement is editorial, not a finding) |
+| `domain:changelog` | changelog.yml schema, version mismatch, missing entries (missing = user-shipped package content changed without an entry/bump; internal metadata-only changes such as `owner.github` need none), invalid links (an unreplaced dev placeholder such as `pull/99999` is expected pre-merge and is CI's check to make, not a finding — see conflict-resolutions), entry-type miscategorization only when the diff shows an observable compatibility/behavior change (re-bucketing bugfix/enhancement is editorial, not a finding) |
 | `domain:build` | `_dev/build/build.yml` missing or outdated, doc template issues |
 | `domain:pipeline` | Ingest pipeline correctness, JSE00001, on_failure, tags, ECS categorization in pipeline |
 | `domain:input` | Agent stream template issues -- all input types including CEL, HTTPJSON, AWS S3, TCP, etc. |

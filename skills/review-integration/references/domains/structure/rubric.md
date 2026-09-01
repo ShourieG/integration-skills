@@ -23,9 +23,9 @@ core file matters most to this domain.
 | Manifest | format_version too low for features used | HIGH |
 | Manifest | conditions.kibana.version too low for agent features used | HIGH |
 | Manifest | Data stream duplicates root manifest fields | MEDIUM |
-| Changelog | `pull/99999` development placeholder link not replaced with the real PR number | MEDIUM |
 
 ## Rules with new-vs-existing severity adjustment
 
-No structure-domain rows carry a new-vs-existing adjustment today. Rows
-land here when they exist in `../../severity-rubric.md`.
+| Domain | Finding | New package | Existing package |
+|--------|---------|------------|-----------------|
+| Changelog | Changelog link does not point at the PR or issue that introduces the change (a placeholder was left in; there is no placeholder value to match on -- see `conflict-resolutions.md`) | Informational note only (first-version leniency) | LOW (`check_changelog_entries.sh` enforces this on every link the PR adds; flag only what that check cannot see -- an entry this PR did not touch, or a review with no PR context) |
