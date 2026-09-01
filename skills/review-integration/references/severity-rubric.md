@@ -1,5 +1,14 @@
 # Severity rubric
 
+This file is the authoritative rubric and is complete on its own -- reading
+it is all a review needs. Do not also load the fragments under `domains/`;
+they are a per-domain split of this same content, for callers that dispatch
+one reviewer per domain.
+
+> **Maintenance:** the fragments under `domains/` mirror this file. A PR
+> that changes a rule here must update the matching fragment in the same
+> PR, and vice versa.
+
 ## Severity definitions
 
 **CRITICAL**: Broken functionality, security vulnerabilities (hardcoded secrets, leaked credentials), missing required files that cause elastic-package build/lint/check failures, infinite loops (pagination without termination, want_more true on error paths).

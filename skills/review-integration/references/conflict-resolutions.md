@@ -1,5 +1,14 @@
 # Conflict resolutions
 
+This file is the authoritative set of conflict resolutions and is complete
+on its own -- reading it is all a review needs. Do not also load the
+fragments under `domains/`; they are a per-domain split of this same
+content, for callers that dispatch one reviewer per domain.
+
+> **Maintenance:** the fragments under `domains/` mirror this file. A PR
+> that changes an entry here must update the matching fragment in the same
+> PR, and vice versa.
+
 Build skills (loaded in Step 3) are prescriptive — they teach the current recommended way to build integrations. The review skill must accept a broader range of valid patterns, including older approaches that predate current standards. This file documents where the review interpretation diverges from the build prescription and why.
 
 ## state.with() absence

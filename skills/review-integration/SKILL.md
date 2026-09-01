@@ -304,3 +304,22 @@ Load `references/severity-rubric.md` for domain-specific calibration and `refere
 | `entity-mappings/references/entity-field-catalog.md` | Entity data stream in scope (see entity detection rule) | ECS availability matrix, Must Have / Should Have field tables, disambiguation guide, field definition examples, entity field review checklist |
 | `entity-mappings/references/entity-pipeline-patterns.md` | Entity data stream in scope (see entity detection rule) | Categorization processors, `entity.id` mirroring, boolean coercion, relationship object patterns, anti-patterns, entity pipeline review checklist |
 | `checklists/entity-analytics-review-checklist.md` | entity-analytics in scope | Severity-tagged entity-analytics package review checklist |
+
+### Not part of this skill -- `references/domains/`
+
+**Do NOT load anything under `references/domains/` when running this
+skill.** The table above is the complete load graph. This section exists
+only so the directory is not mistaken for a reference you missed.
+
+`references/domains/` holds a per-domain split of `severity-rubric.md` and
+`conflict-resolutions.md`, plus a reviewer guidance variant. It serves one
+caller: an external orchestrator that splits a review into one reviewer
+per domain, where each reviewer sees only its own domain and cannot run
+this skill's whole-review flow. Those files carry no rule this skill does
+not already give you, so loading them adds nothing but duplicated context
+and a second chance to read a rule out of its domain.
+
+If you are running a single-pass review -- which is what this skill
+describes -- read `references/severity-rubric.md` and
+`references/conflict-resolutions.md` instead. They are the authoritative
+copies, and the fragments are kept in sync with them.
