@@ -194,13 +194,16 @@ are **informational notes only, not findings**. Do not flag them at
 MEDIUM or HIGH. For subsequent versions, the same placeholders are
 real findings (MEDIUM or HIGH as appropriate).
 
-**Exception -- the `pull/99999` development placeholder.** Leniency
-does not apply to it, at any package version: flag it at **MEDIUM**.
-Unlike `pull/0`, `pull/99999` passes `elastic-package lint`, so
-nothing else catches it and it silently reaches merge as a dead
-changelog link. The fix is to replace it with the real PR number
-once the PR exists -- see the `package-spec` skill's "Updating the
-changelog link after PR creation".
+**Exception -- the `pull/0` placeholder.** Leniency never applies to
+`pull/0`, at any package version: `elastic-package lint` rejects it,
+so flag it whenever you see it. `pull/99999` is different -- it
+passes lint, so nothing else catches a stale one before it reaches
+merge as a dead changelog link: on a first-version package it stays
+an informational note (the leniency above), and on any subsequent
+version flag it at **MEDIUM** (the severity rubric's changelog row).
+The fix either way is to replace the placeholder with the real PR
+number once the PR exists -- see the `package-spec` skill's
+"Updating the changelog link after PR creation".
 
 ### CEL-specific operating rules
 
